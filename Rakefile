@@ -40,4 +40,4 @@ end
 
 task all: %i[test sep lint]
 
-task default: all
+task default: :all
