@@ -36,6 +36,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.4.1)
       parser (>= 2.7.1.5)
+    rubocop-minitest (0.12.1)
+      rubocop (>= 0.90, < 2.0)
+    rubocop-rake (0.5.1)
+      rubocop
     ruby-progressbar (1.11.0)
     unicode-display_width (2.0.0)
     webmock (3.12.2)
@@ -52,6 +56,8 @@ DEPENDENCIES
   rake (~> 13.0)
   rake-notes (~> 0.2.2)
   rubocop (~> 1.13)
+  rubocop-minitest (~> 0.12.1)
+  rubocop-rake (~> 0.5.1)
   webmock (~> 3.12)
 
 RUBY VERSION
