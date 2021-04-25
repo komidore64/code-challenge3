@@ -1,0 +1,10 @@
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  Exclude:
+    - 'test/**/*.rb'
+
+Style/MixinUsage:
+  Exclude:
+    - 'test/**/*.rb'

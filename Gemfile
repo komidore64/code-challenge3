@@ -22,12 +22,14 @@ source 'https://rubygems.org'
 ruby '~> 2.7.2'
 
 group :development do
-  gem 'minitest',         '~> 5.14'
-  gem 'pry',              '~> 0.14.1'
-  gem 'rake',             '~> 13.0'
-  gem 'rake-notes',       '~> 0.2.2'
-  gem 'rubocop',          '~> 1.13'
-  gem 'rubocop-minitest', '~> 0.12.1'
-  gem 'rubocop-rake',     '~> 0.5.1'
-  gem 'webmock',          '~> 3.12'
+  gem 'minitest',           '~> 5.14'
+  gem 'pry',                '~> 0.13.1' # 0.14.x conflicts with pry-byebug
+  gem 'pry-byebug',         '~> 3.9.0'
+  gem 'pry-stack_explorer', '~> 0.6.1'
+  gem 'rake',               '~> 13.0'
+  gem 'rake-notes',         '~> 0.2.2'
+  gem 'rubocop',            '~> 1.13'
+  gem 'rubocop-minitest',   '~> 0.12.1'
+  gem 'rubocop-rake',       '~> 0.5.1'
+  gem 'webmock',            '~> 3.12'
 end
