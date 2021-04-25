@@ -64,5 +64,37 @@ module CodeChallenge3
       expected = []
       assert_equal(expected, processor.send(:acquire_job_listings, 'Boston', 'Ruby'))
     end
+
+    def test_analyze_data
+      skip('ran out of time')
+    end
+
+    def test_analyze_location_data
+      skip('ran out of time')
+    end
+
+    def test_prune_zeroes
+      skip('ran out of time')
+    end
+
+    def test_prune_empty_locations
+      skip('ran out of time')
+    end
+
+    def test_deep_sum_jobs
+      skip('ran out of time')
+    end
+
+    def test_job_percentages
+      skip('ran out of time')
+    end
+
+    def test_pretty_print_results
+      skip('ran out of time')
+    end
+
+    def test_pretty_print_location_results
+      skip('ran out of time')
+    end
   end
 end

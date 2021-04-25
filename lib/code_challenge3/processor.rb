@@ -54,23 +54,6 @@ module CodeChallenge3
       data
     end
 
-    def analyze_data(input_data)
-      data = Marshal.load(Marshal.dump(input_data)) # deep copy
-
-      prune_zeroes(data)
-      prune_empty_locations(data)
-      total_jobs = deep_sum_jobs(data)
-
-      job_percentages(total_jobs, data)
-    end
-
-    def pretty_print_results(data)
-      data.each do |location, loc_data|
-        puts("#{location}:")
-        pretty_print_location_results(loc_data)
-      end
-    end
-
     def gather_location_data(loc)
       loc_data = {}
       @descriptions.each do |desc|
@@ -86,6 +69,16 @@ module CodeChallenge3
       }
 
       JSON.parse(@api.request(query_hash))
+    end
+
+    def analyze_data(input_data)
+      data = Marshal.load(Marshal.dump(input_data)) # deep copy
+
+      prune_zeroes(data)
+      prune_empty_locations(data)
+      total_jobs = deep_sum_jobs(data)
+
+      job_percentages(total_jobs, data)
     end
 
     def analyze_location_data(total, location_data)
@@ -122,6 +115,13 @@ module CodeChallenge3
         metrics[location] = analyze_location_data(total_jobs, loc_data)
       end
       metrics
+    end
+
+    def pretty_print_results(data)
+      data.each do |location, loc_data|
+        puts("#{location}:")
+        pretty_print_location_results(loc_data)
+      end
     end
 
     def pretty_print_location_results(data)
