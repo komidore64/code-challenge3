@@ -147,11 +147,13 @@ programming language. The `DataEntry` would provide some utility methods and
 attribute readers.
 
 After that I would change the data model from a hash of hashes into a flat
-array or `DataEntry` objects. This would let me write a number of convenience
+array of `DataEntry` objects. This would let me write a number of convenience
 methods for filtering that array based on location and/or programming language.
 
 These described changes would make maintenance of the `Processor` easier
-because there's less direct logic against primitives in your face.
+because there's less direct logic against primitives in your face. Visually
+there would be more method calls on higher level objects as opposed to direct
+manipulation of hashes and hashes of hashes.
 
 ## How to run it
 
@@ -245,7 +247,7 @@ $ git ls-files | grep -v -e LICENSE | xargs wc -l
      1 .ruby-version
     35 Gemfile
     79 Gemfile.lock
-   271 README.md
+   273 README.md
     43 Rakefile
     35 bin/code-challenge3
     21 lib/code_challenge3.rb
@@ -267,5 +269,5 @@ $ git ls-files | grep -v -e LICENSE | xargs wc -l
    652 test/fixtures/positions.json
    100 test/processor_test.rb
     24 test/test_helper.rb
-  1952 total
+  1954 total
 ```
