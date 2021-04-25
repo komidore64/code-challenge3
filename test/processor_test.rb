@@ -28,56 +28,41 @@ require 'code_challenge3/logging'
 
 module CodeChallenge3
   class ProcessorTest < Minitest::Test
-    def setup
-      mock_api = setup_mockapi
-      @processor = Processor.new(locations: ['Boston'], descriptions: ['Ruby'], api: mock_api)
-    end
+    def setup; end
 
-    def teardown
-      @processor
-    end
+    def teardown; end
 
     def test_gather_data
-      skip('fixme')
+      mockapi = MiniTest::Mock.new
+      mockapi.expect(:request, TestHelper.fixture('boston_ruby.json'), [{ location: 'Boston', description: 'Ruby' }])
+      processor = Processor.new(locations: ['Boston'], descriptions: ['Ruby'], api: mockapi)
+
       expected = {
         'Boston' => {
           'Ruby' => 0
         }
       }
-      assert_equal(expected, @processor.send(:gather_data))
+      assert_equal(expected, processor.send(:gather_data))
     end
 
     def test_gather_location_data
-      skip('fixme')
+      mockapi = MiniTest::Mock.new
+      mockapi.expect(:request, TestHelper.fixture('boston_ruby.json'), [{ location: 'Boston', description: 'Ruby' }])
+      processor = Processor.new(locations: ['Boston'], descriptions: ['Ruby'], api: mockapi)
+
       expected = {
         'Ruby' => 0
       }
-      assert_equal(expected, @processor.send(:gather_location_data, 'Boston'))
+      assert_equal(expected, processor.send(:gather_location_data, 'Boston'))
     end
 
     def test_acquire_job_listings
-      skip('fixme')
-      expected = []
-      assert_equal(expected, @processor.send(:acquire_job_listings, 'Boston', 'Ruby'))
-    end
+      mockapi = MiniTest::Mock.new
+      mockapi.expect(:request, TestHelper.fixture('boston_ruby.json'), [{ location: 'Boston', description: 'Ruby' }])
+      processor = Processor.new(locations: ['Boston'], descriptions: ['Ruby'], api: mockapi)
 
-    def setup_mockapi
-      mock_api = MiniTest::Mock.new
-      [
-        ['Java', 'boston_java.json'],
-        ['C#', 'boston_csharp.json'],
-        ['Python', 'boston_python.json'],
-        ['Swift', 'boston_swift.json'],
-        ['Objective-C', 'boston_objectivec.json'],
-        ['Ruby', 'boston_ruby.json'],
-        ['Kotlin', 'boston_kotlin.json'],
-        ['Go', 'boston_go.json'],
-        ['C++', 'boston_cpp.json'],
-        ['JavaScript', 'boston_javascript.json']
-      ].each do |language|
-        mock_api.expect(:request, TestHelper.fixture(language.last), [{ location: 'Boston', description: language.first }])
-      end
-      mock_api
+      expected = []
+      assert_equal(expected, processor.send(:acquire_job_listings, 'Boston', 'Ruby'))
     end
   end
 end
