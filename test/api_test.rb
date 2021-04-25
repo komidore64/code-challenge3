@@ -30,9 +30,12 @@ module CodeChallenge3
   class APITest < Minitest::Test
     include Logging
 
+    BASE_URL = 'https://jobs.github.com'
+    PATH = '/positions.json'
+
     def setup
       logger.level = :warn
-      @api = API.new
+      @api = API.new(BASE_URL, PATH)
     end
 
     def teardown
@@ -40,22 +43,22 @@ module CodeChallenge3
     end
 
     def test_request
-      stub_request(:get, 'https://jobs.github.com/positions.json').to_return(body: '[]')
+      stub_request(:get, BASE_URL + PATH).to_return(body: '[]')
       assert_equal('[]', @api.request)
     end
 
     def test_request_with_loc
-      stub_request(:get, 'https://jobs.github.com/positions.json?location=Los+Angeles').to_return(body: '[]')
+      stub_request(:get, BASE_URL + PATH + '?location=Los+Angeles').to_return(body: '[]')
       assert_equal('[]', @api.request(location: 'Los Angeles'))
     end
 
     def test_request_with_desc
-      stub_request(:get, 'https://jobs.github.com/positions.json?description=Python').to_return(body: '[]')
+      stub_request(:get, BASE_URL + PATH + '?description=Python').to_return(body: '[]')
       assert_equal('[]', @api.request(description: 'Python'))
     end
 
     def test_request_with_loc_and_desc
-      stub_request(:get, 'https://jobs.github.com/positions.json?description=Ruby&location=Boston').to_return(body: '[]')
+      stub_request(:get, BASE_URL + PATH + '?description=Ruby&location=Boston').to_return(body: '[]')
       assert_equal('[]', @api.request(description: 'Ruby', location: 'Boston'))
     end
   end

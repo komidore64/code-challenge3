@@ -8,3 +8,7 @@ Layout/LineLength:
 Style/MixinUsage:
   Exclude:
     - 'test/**/*.rb'
+
+Style/StringConcatenation:
+  Exclude:
+    - 'test/**/*.rb'

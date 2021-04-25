@@ -28,7 +28,7 @@ module CodeChallenge3
   class API
     include Logging
 
-    def initialize(base_url: 'https://jobs.github.com', path: '/positions.json')
+    def initialize(base_url, path)
       @base_url = base_url
       @path = path
       logger.debug("API initialized [ base_url: #{base_url}, path: #{path} ]")
