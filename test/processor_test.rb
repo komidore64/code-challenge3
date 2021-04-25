@@ -28,7 +28,6 @@ require 'code_challenge3/logging'
 
 module CodeChallenge3
   class ProcessorTest < Minitest::Test
-
     def setup
       mock_api = setup_mockapi
       @processor = Processor.new(locations: ['Boston'], descriptions: ['Ruby'], api: mock_api)
@@ -39,7 +38,7 @@ module CodeChallenge3
     end
 
     def test_gather_data
-      skip("fixme")
+      skip('fixme')
       expected = {
         'Boston' => {
           'Ruby' => 0
@@ -49,7 +48,7 @@ module CodeChallenge3
     end
 
     def test_gather_location_data
-      skip("fixme")
+      skip('fixme')
       expected = {
         'Ruby' => 0
       }
@@ -57,7 +56,7 @@ module CodeChallenge3
     end
 
     def test_acquire_job_listings
-      skip("fixme")
+      skip('fixme')
       expected = []
       assert_equal(expected, @processor.send(:acquire_job_listings, 'Boston', 'Ruby'))
     end
@@ -80,6 +79,5 @@ module CodeChallenge3
       end
       mock_api
     end
-
   end
 end

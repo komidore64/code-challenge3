@@ -26,7 +26,7 @@ module CodeChallenge3
   class Processor
     include Logging
 
-    def initialize(locations: [], descriptions: [], api:, log_level: :warn)
+    def initialize(api:, locations: [], descriptions: [], log_level: :warn)
       @locations = locations
       @descriptions = descriptions
       @api = api

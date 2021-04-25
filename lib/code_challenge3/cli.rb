@@ -34,34 +34,34 @@ module CodeChallenge3
         base_url: 'https://jobs.github.com',
         url_path: '/positions.json',
         locations: [
-          "Boston",
-          "San Francisco",
-          "Los Angeles",
-          "Denver",
-          "Boulder",
-          "Chicago",
-          "New York",
-          "Raleigh"
+          'Boston',
+          'San Francisco',
+          'Los Angeles',
+          'Denver',
+          'Boulder',
+          'Chicago',
+          'New York',
+          'Raleigh'
         ],
         descriptions: [
-          "Java",
-          "C#",
-          "Python",
-          "Swift",
-          "Objective-C",
-          "Ruby",
-          "Kotlin",
-          "Go",
-          "C++",
-          "JavaScript"
+          'Java',
+          'C#',
+          'Python',
+          'Swift',
+          'Objective-C',
+          'Ruby',
+          'Kotlin',
+          'Go',
+          'C++',
+          'JavaScript'
         ],
-        log_level: :warn,
+        log_level: :warn
       }
     end
 
     def parse!(input_arr: ARGV)
       optparse = OptionParser.new do |opts|
-        opts.banner = "USAGE: code-challenge3 [OPTIONS]"
+        opts.banner = 'USAGE: code-challenge3 [OPTIONS]'
         opts.version = "0.0.1 Copyright (C) #{Time.now.year}  M. Adam Price"
 
         opts.on('--base-url URL',
