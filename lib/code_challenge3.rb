@@ -18,3 +18,4 @@
 #
 
 require 'code_challenge3/api'
+require 'code_challenge3/processor'

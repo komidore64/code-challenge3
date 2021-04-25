@@ -17,30 +17,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'net/http'
-
-require 'code_challenge3/logging'
-
-module CodeChallenge3
-  # API class
-  #
-  # The API wraps all the requests to jobs.github.com
-  class API
-    include Logging
-
-    def initialize(base_url, path)
-      @base_url = base_url
-      @path = path
-      logger.debug("API initialized [ base_url: #{base_url}, path: #{path} ]")
-    end
-
-    def request(query_hash = {})
-      uri = URI(@base_url)
-      uri.path = @path
-      uri.query = URI.encode_www_form(query_hash) unless query_hash.empty?
-
-      logger.debug("API: sending request [ #{uri} ]")
-      Net::HTTP.get(uri)
-    end
+class TestHelper
+  def self.fixture(filename)
+    File.open(File.join(File.dirname(__FILE__), 'fixtures', filename), 'r', &:read)
   end
 end
