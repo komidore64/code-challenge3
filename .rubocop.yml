@@ -12,3 +12,7 @@ Style/MixinUsage:
 Style/StringConcatenation:
   Exclude:
     - 'test/**/*.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'test/**/*.rb'

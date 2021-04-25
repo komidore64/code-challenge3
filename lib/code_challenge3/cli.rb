@@ -33,28 +33,10 @@ module CodeChallenge3
       @options = {
         base_url: 'https://jobs.github.com',
         url_path: '/positions.json',
-        locations: [
-          'Boston',
-          'San Francisco',
-          'Los Angeles',
-          'Denver',
-          'Boulder',
-          'Chicago',
-          'New York',
-          'Raleigh'
-        ],
-        descriptions: [
-          'Java',
-          'C#',
-          'Python',
-          'Swift',
-          'Objective-C',
-          'Ruby',
-          'Kotlin',
-          'Go',
-          'C++',
-          'JavaScript'
-        ],
+        locations: ['Boston', 'San Francisco', 'Los Angeles', 'Denver',
+                    'Boulder', 'Chicago', 'New York', 'Raleigh'],
+        descriptions: ['Java', 'C#', 'Python', 'Swift', 'Objective-C', 'Ruby',
+                       'Kotlin', 'Go', 'C++', 'JavaScript'],
         log_level: :warn
       }
     end
@@ -64,42 +46,11 @@ module CodeChallenge3
         opts.banner = 'USAGE: code-challenge3 [OPTIONS]'
         opts.version = "0.0.1 Copyright (C) #{Time.now.year}  M. Adam Price"
 
-        opts.on('--base-url URL',
-                String,
-                'Scheme and hostname of the server to request.',
-                "(default: #{@options[:base_url]})") do |base_url|
-          @options[:base_url] = base_url
-        end
-
-        opts.on('--url-path PATH',
-                String,
-                'Path to request from the server.',
-                "(default: #{@options[:url_path]})") do |url_path|
-          @options[:url_path] = url_path
-        end
-
-        opts.on('--locations LOCATIONS',
-                Array,
-                'Comma-seperated list of locations to check for job listings.',
-                '(default: Boston, San Francisco, Los Angeles, Denver, Boulder,',
-                'Chicago, New York, Raleigh)') do |locations|
-          @options[:locations] = locations
-        end
-
-        opts.on('--languages LANGUAGES',
-                Array,
-                'Comma-seperated list of programming languages to search for.',
-                '(default: Java, C#, Python, Swift, Objective-C, Ruby, Kotlin,',
-                'Go, C++, JavaScript)') do |languages|
-          @options[:descriptions] = languages
-        end
-
-        opts.on('--log-level LEVEL',
-                %i[debug info warn],
-                'Set the log level. [debug, info, warn]',
-                "(default: #{@options[:log_level]})") do |log_level|
-          @options[:log_level] = log_level
-        end
+        define_base_url_option(opts)
+        define_url_path_option(opts)
+        define_locations_option(opts)
+        define_languages_option(opts)
+        define_log_level_option(opts)
       end
 
       optparse.parse!(input_arr)
@@ -113,6 +64,55 @@ module CodeChallenge3
         log_level: @options[:log_level]
       )
       processor.process!
+    end
+
+    private
+
+    def define_base_url_option(opts)
+      opts.on('--base-url URL',
+              String,
+              'Scheme and hostname of the server to request.',
+              "(default: #{@options[:base_url]})") do |base_url|
+        @options[:base_url] = base_url
+      end
+    end
+
+    def define_url_path_option(opts)
+      opts.on('--url-path PATH',
+              String,
+              'Path to request from the server.',
+              "(default: #{@options[:url_path]})") do |url_path|
+        @options[:url_path] = url_path
+      end
+    end
+
+    def define_locations_option(opts)
+      opts.on('--locations LOCATIONS',
+              Array,
+              'Comma-seperated list of locations to check for job listings.',
+              '(default: Boston, San Francisco, Los Angeles, Denver, Boulder,',
+              'Chicago, New York, Raleigh)') do |locations|
+        @options[:locations] = locations
+      end
+    end
+
+    def define_languages_option(opts)
+      opts.on('--languages LANGUAGES',
+              Array,
+              'Comma-seperated list of programming languages to search for.',
+              '(default: Java, C#, Python, Swift, Objective-C, Ruby, Kotlin,',
+              'Go, C++, JavaScript)') do |languages|
+        @options[:descriptions] = languages
+      end
+    end
+
+    def define_log_level_option(opts)
+      opts.on('--log-level LEVEL',
+              %i[debug info warn],
+              'Set the log level. [debug, info, warn]',
+              "(default: #{@options[:log_level]})") do |log_level|
+        @options[:log_level] = log_level
+      end
     end
   end
 end

@@ -23,6 +23,10 @@ require 'code_challenge3/logging'
 require 'code_challenge3/api'
 
 module CodeChallenge3
+  # Processor class
+  #
+  # The Processor submits requests to the API class, analyzes the data, and
+  # finally generates the pretty output.
   class Processor
     include Logging
 
