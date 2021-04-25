@@ -58,3 +58,5 @@ This exercise should take you no more than 6 hours, if it does please just
 commit what you've completed.
 
 ## Notes / Design
+
+TODO
