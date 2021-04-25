@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # frozen_string_literal: true
 
 # code-challenge3
@@ -17,32 +19,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'net/http'
+code_challenge3_lib = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(code_challenge3_lib)
 
-require 'code_challenge3/logging'
+require 'code_challenge3'
+require 'code_challenge3/cli'
 
-module CodeChallenge3
-  # API class
-  #
-  # The API wraps all the requests to jobs.github.com
-  class API
-    include Logging
-
-    def initialize(base_url, path, log_level: :warn)
-      @base_url = base_url
-      @path = path
-
-      logger.level = log_level
-      logger.debug("API initialized [ base_url: #{base_url}, path: #{path} ]")
-    end
-
-    def request(query_hash = {})
-      uri = URI(@base_url)
-      uri.path = @path
-      uri.query = URI.encode_www_form(query_hash) unless query_hash.empty?
-
-      logger.debug("API: sending request [ #{uri} ]")
-      Net::HTTP.get(uri)
-    end
-  end
+begin
+  cli = CodeChallenge3::CLI.new
+  cli.parse!
+  cli.find_me_a_job!
+rescue RuntimeError => e
+  puts(e.message)
+  exit 1
 end
