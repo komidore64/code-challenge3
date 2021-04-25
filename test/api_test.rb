@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# code-challenge2
+# code-challenge3
 # Copyright (C) 2021  M. Adam Price
 #
 # This program is free software: you can redistribute it and/or modify
