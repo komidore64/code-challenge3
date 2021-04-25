@@ -57,6 +57,52 @@ Also, add a *README* with the follow questions documented and answered.
 This exercise should take you no more than 6 hours, if it does please just
 commit what you've completed.
 
-## Notes / Design
+## Notes
 
-TODO
+### 10,000 foot view
+
+What we're wanting to do at a high-level:
+
+1. Pull the interested data from the API
+2. Analyze what we received
+3. Present output
+
+Maybe that's too high-level! That sounds extremely simple at face value.
+
+#### Step one
+
+Search all permutations of cities with programming languages. Really all we
+need to store is the number of listings we find for each city-language
+combination.
+
+#### Step two
+
+What's our total (all languages for one city)? This is how we'll get our
+percentage values.
+
+#### Step three
+
+Print one city at a time while looping over all the languages found for that
+area.
+
+## Design
+
+Here at the beginning, I'm mostly just imagining two classes, but one that
+really does most of the heavy lifting.
+
+### API
+
+This class will provide a nice and simple interface for making our web
+requests.
+
+### Processor
+
+This class is expected to do most of the grunt work. It will ask the API class
+to make requests, analyze the results, and finally print them to `stdout`.
+
+If we wanted to get _really fancy_, we could parallelize our API requests and
+data processing, but honestly that feels like over-engineering for this code
+challenge. Please see my
+[code-challenge2](https://github.com/komidore64/code-challenge2) if you're
+interested in how I'd handle something like this with a pool and workers model.
+:wink:
