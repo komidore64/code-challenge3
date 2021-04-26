@@ -166,19 +166,19 @@ bundle install
 
 
 # tests
-rake test
+bundle exec rake test
 
 # rubocop
-rake lint
+bundle exec rake lint
 
 # run it
-./bin/code-challenge3
+bundle exec bin/code-challenge3
 ```
 
 help output:
 
 ```
-$ bin/code-challenge3 --help
+$ bundle exec bin/code-challenge3 --help
 USAGE: code-challenge3 [OPTIONS]
         --base-url URL               Scheme and hostname of the server to request.
                                      (default: https://jobs.github.com)
